@@ -88,5 +88,28 @@ public class Exercise04 {
              System.out.println("Tên là: " + words[words.length- 1]);
          }
 
+         String question10(String s1, String s2){
+            int length1 = s1.length();
+            int length2 = s2.length();
 
+            if (length1 != length2) return "Không bằng nhau";
+
+            for (int i = 0; i < length1; i++) {
+                char c1 = s1.charAt(i);
+                char c2 = s2.charAt(length2 - 1 - i);
+
+                if (c1 != c2) return  "Không giống nhau";
+            }
+            return "Giống nhau";
+            }
+
+         String question15(String s) {
+            String[] word = s.trim().split("\\s+");
+            String newString = "";
+            for (int i = word.length - 1; i >= 0; i--) {
+                newString = newString + word[i] + " ";
+            }
+
+            return newString;
+          }
 }

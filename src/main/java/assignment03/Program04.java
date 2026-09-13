@@ -8,6 +8,8 @@ public class Program04 {
         //ex04.question02();
 
        // ex04.question04_2();
-        ex04.question06_2();
+        // ex04.question06_2();
+        // System.out.println(ex04.question10("ok", "ko"));
+        System.out.println(ex04.question15("Nguyen Van Khoa"));
     }
 }
