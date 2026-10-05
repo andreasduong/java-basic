@@ -15,7 +15,11 @@ public class CongNhan extends CanBo{
     }
 
     public void setLevel(int level) {
-        this.level = level;
+        if (level >= 1 && level <= 10) {
+            this.level = level;
+        } else {
+            throw new IllegalArgumentException("Bậc phải từ 1 đến 10");
+        }
     }
 
     @Override
