@@ -2,6 +2,7 @@ package assignment05.excercise1;
 
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TuyenSinh implements ITuyenSinh{
@@ -20,15 +21,65 @@ public class TuyenSinh implements ITuyenSinh{
         int mucUuTien = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập vào khối thi:");
         String khoiThi = scanner.nextLine();
+        ThiSinh thiSinh ;
+        if (khoiThi.equals("A")) {
+            thiSinh = new ThiSinhKhoiA(soBaoDanh, hoTen, diaChi, mucUuTien);
+        } else if (khoiThi.equals("B")) {
+            thiSinh = new ThiSinhKhoiB(soBaoDanh, hoTen, diaChi, mucUuTien);
+
+        } else {
+            thiSinh = new ThiSinhKhoiC(soBaoDanh, hoTen, diaChi, mucUuTien);
+        }
+        thiSinhList.add(thiSinh);
     }
 
     @Override
     public void hienThiDSTS() {
-
+        System.out.println("+------+--------------------+--------------------+------+--------------------+");
+        System.out.println("| SBD  |       HO TEN       |      DIA CHI       | MUT  |     MON THI        |");
+        System.out.println("+------+--------------------+--------------------+------+--------------------+");
+        for (ThiSinh thiSinh : thiSinhList) {
+            System.out.printf("| %-4s | %-18s | %-18s | %-4s | %-18s |%n"
+                    , thiSinh.soBaoDanh, thiSinh.hoTen, thiSinh.diaChi, thiSinh.mucUuTien, thiSinh.monThi());
+        }
     }
 
     @Override
     public void timKiemThiSinhTheoSBD() {
-
+        System.out.printf("Nhập theo số báo danh:");
+        int sbd = Integer.parseInt(scanner.nextLine());
+        System.out.printf("+-----+--------------------+--------------------+------+--------------------+");
+        System.out.printf("| SBD |       HO TEN       |      DIA CHI       | MUT  |     MON THI        |");
+        System.out.printf("+-----+--------------------+--------------------+------+--------------------+");
+        for (ThiSinh thiSinh : thiSinhList) {
+            if (sbd != thiSinh.soBaoDanh) continue;
+            System.out.printf("| %-4s  | %-18s | %-18s | %-4s | %-18s |%n"
+                    , thiSinh.soBaoDanh, thiSinh.hoTen, thiSinh.diaChi, thiSinh.mucUuTien, thiSinh.monThi());
+        }
     }
+
+    public void showMenu() {
+        while (true) {
+            System.out.println("1.Thêm thí sinh");
+            System.out.println("2. Hiển thị thí sinh");
+            System.out.println("3. Tìm kiếm theo SBD");
+            System.out.println("4. Thoát");
+            System.out.println("Ấn để chọn chức năng");
+            int menu = Integer.parseInt(scanner.nextLine());
+            if (menu == 1) {
+                themThiSinh();
+            } else if (menu == 2){
+                hienThiDSTS();
+            } else if (menu == 3) {
+                timKiemThiSinhTheoSBD();
+            } else if (menu == 4) {
+                return;
+            } else {
+                System.out.printf("vui lòng chọn lại");
+            }
+        }
+    }
+
+
 }
+
