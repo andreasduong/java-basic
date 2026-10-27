@@ -42,20 +42,22 @@ public class TuyenSinh implements ITuyenSinh{
             System.out.printf("| %-4s | %-18s | %-18s | %-4s | %-18s |%n"
                     , thiSinh.soBaoDanh, thiSinh.hoTen, thiSinh.diaChi, thiSinh.mucUuTien, thiSinh.monThi());
         }
+        System.out.println("+------+--------------------+--------------------+------+--------------------+");
     }
 
     @Override
     public void timKiemThiSinhTheoSBD() {
-        System.out.printf("Nhập theo số báo danh:");
+        System.out.println("Nhập theo số báo danh:");
         int sbd = Integer.parseInt(scanner.nextLine());
-        System.out.printf("+-----+--------------------+--------------------+------+--------------------+");
-        System.out.printf("| SBD |       HO TEN       |      DIA CHI       | MUT  |     MON THI        |");
-        System.out.printf("+-----+--------------------+--------------------+------+--------------------+");
+        System.out.println("+-----+--------------------+--------------------+------+--------------------+");
+        System.out.println("| SBD |       HO TEN       |      DIA CHI       | MUT  |     MON THI        |");
+        System.out.println("+-----+--------------------+--------------------+------+--------------------+");
         for (ThiSinh thiSinh : thiSinhList) {
             if (sbd != thiSinh.soBaoDanh) continue;
             System.out.printf("| %-4s  | %-18s | %-18s | %-4s | %-18s |%n"
                     , thiSinh.soBaoDanh, thiSinh.hoTen, thiSinh.diaChi, thiSinh.mucUuTien, thiSinh.monThi());
         }
+        System.out.println("+------+--------------------+--------------------+------+--------------------+");
     }
 
     public void showMenu() {
